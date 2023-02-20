@@ -1,0 +1,22 @@
+body{
+  margin: 0;
+}
+main{
+  display: flex;
+}
+
+html{
+  scroll-behavior: smooth !important;
+  background-color: violet;
+  font-family: 'Karla', sans-serif;
+
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+}
+
+/* *{
+  outline: 3px dashed violet;
+} */
