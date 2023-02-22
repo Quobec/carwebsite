@@ -8,17 +8,18 @@ export const CarArticle = styled.div `
     background-color: transparent;
 
 
-    .backgroundImage{
+    .welcome:before{
         background-image: url(${props => props.backgroundImage.src});
         width: 100%;
         height: 100%;
         background-position: center;
         background-size: 100%;
         background-repeat: no-repeat;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
+        filter: blur(8px);
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        background-color: red;
     }
 
     .welcome{
@@ -27,6 +28,9 @@ export const CarArticle = styled.div `
         padding-left: 150px;
         padding-top: 150px;
         box-sizing: border-box;
+        position: sticky;
+        top: 0;
+        z-index: -1;
 
         h5{
             font-size: 24px;
@@ -124,7 +128,6 @@ export const CarArticle = styled.div `
 
             .articleImage{
                 width: 90%;
-                aspect-ratio: 5/3;
                 background-position: center;
                 background-size: 100%;
                 background-repeat: no-repeat;

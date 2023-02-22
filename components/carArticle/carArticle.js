@@ -5,12 +5,13 @@ export default function CarArticle({article}) {
     return (
         <>
             <S.CarArticle backgroundImage={article.backgroundPicture}>
+                {/* <div className="welcome">
+                </div> */}
                 <div className="welcome">
                     <h5>Car Classics</h5>
                     <h3>{article.carName}</h3>
                     <p>{article.intro}</p>
                 </div>
-                <div className="backgroundImage"></div>
                 <div className="information">
                     <div className="specs">
                         <h5>BRAND</h5>
@@ -46,7 +47,7 @@ export default function CarArticle({article}) {
                     </div>
                     <div className="gallery">
                         {article.articlePictures.map((picture) => {
-                            return <div className="articleImage" style={{backgroundImage: 'url('+picture.src+')'}}/>
+                            return <img className="articleImage" src={picture.src}/>
                         })}
                     </div>
                 </div>
