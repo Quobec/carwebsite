@@ -1,35 +1,27 @@
 import styled from "styled-components";
 
 export const Test = styled.div `
+    overflow: hidden;
 
     section{
         width: 100%;
+        height: fit-content;
+    
+    }
+
+    .div{
+        width: 100%;
         height: 100vh;
-        background-color: darkviolet;
-    
-        position: relative;
-    
-    }
-
-    section:nth-child(odd){
-        background-color: darkgreen;
-    }
-
-    .block{
-        width: 90%;
-        height: 30vh;
-
         
-        position: sticky;
-        top: 0px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+        scroll-snap-align: start;
     }
 
-    .red{
-        background-color: red;
-    }
-
-    .blue{
-        background-color: blue;
+    .div:nth-child(odd){
+        background-color: pink;
     }
 
 `;

@@ -7,10 +7,7 @@ export const CarArticle = styled.div `
     position: relative;
     background-color: transparent;
 
-    ${props => console.log(props.backgroundBlur)}
-
     .welcomeImage{
-        filter: blur(${props => props.backgroundBlur+"px"});
         background-image: url(${props => props.backgroundImage.src});
         background-position: center;
         background-size: 100%;
@@ -25,6 +22,7 @@ export const CarArticle = styled.div `
     }
 
     .welcome{
+        scroll-snap-align: start;
         width: 100%;
         height: 100vh;
         padding-left: 150px;
@@ -34,26 +32,48 @@ export const CarArticle = styled.div `
         top: 0;
         z-index: -1;
 
+        .intro{
+            width: fit-content;
+            height: fit-content;
+            opacity: 1;
+            transition: 1s;
+        }
+
+        .intro:hover{ //doesnt work currently because CarArticle is over it
+            opacity: 0; 
+        }
+        
+
         h5{
             font-size: 24px;
             font-weight: 800;
-            margin-left: 50px;
-            width: 30vw;
+            padding-left: 50px;
+            box-sizing: border-box;
+            width: fit-content;
+            background-color: white;
+            padding: 10px;
+            margin: 0;
         }
 
         h3{
             font-size: 40px;
             font-weight: 600;
             color: white;
-            margin-top: .5em;
-            margin-bottom: .5em;
-            width: 30vw;
+            margin: 0;
+            width: fit-content;
+            background-color: black;
+            padding: 10px;
+            margin: .5em 0;
         }
 
         p{
+            margin: 0;
             font-size: 24px;
             font-weight: 400;
-            width: 30vw;
+            max-width: 30vw;
+            width: fit-content;
+            background-color: white;
+            padding: 10px;
         }
     }
 
@@ -69,8 +89,8 @@ export const CarArticle = styled.div `
             height: 100vh;
             display: flex;
             align-items: flex-start;
-            padding-left: 2%;
             padding-top: 2%;
+            padding-left: 2%;
             flex-direction: column;
             box-sizing: border-box;
             background-color: #fff;
@@ -80,6 +100,7 @@ export const CarArticle = styled.div `
                 font-size: 17px;
                 font-weight: 400;
                 color: #6FC9B9;
+                width: 80%;
             }
 
             h3{
@@ -105,6 +126,13 @@ export const CarArticle = styled.div `
             p{
                 font-size: 20px;
                 font-weight: 400;
+                opacity: 0;
+                line-height: 2em;
+            }
+
+            .animated{
+                animation: animated 2s forwards;
+                animation-timing-function: cubic-bezier(.06,1.17,.39,.91)
             }
 
             .techDataBlock{
@@ -137,7 +165,19 @@ export const CarArticle = styled.div `
                 margin: 50px 0;
             }
         }
+    }
 
+    @keyframes animated {
+        0%{
+            opacity: 0;
+            line-height: 2em;
+            transform: translateY(200px)
+        }
+        100%{
+            opacity: 1;
+            line-height: 1.5em;
+            transform: translateY(0px)
+        }
     }
 
 `;

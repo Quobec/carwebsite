@@ -10,7 +10,7 @@ export const Container = styled.div`
 
     position: fixed;
     height: 100vh;
-    width: 100px;
+    width: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,11 +20,15 @@ export const Container = styled.div`
     z-index: 3;
 
     .segment_main{
-        width: 60px;
-        height: 20px;
+        width: 50px; 
+        height: 20px; 
+        min-height: 20px;  
         background-color: #ffffff;
+        color: white;
+        user-select: none;
+        overflow: hidden;
         border-radius: 10px;
-        cursor: pointer;
+        font-size: 10px;
     }
 
     .segment_lesser{
@@ -33,10 +37,26 @@ export const Container = styled.div`
         background-color: #ffffff;
         border-radius: 10px;
         cursor: pointer;
+        color: white;
+        user-select: none;
+        border-radius: 10px;
+        overflow: hidden;
+        font-size: 10px;
     }
 
     .selected{
         background-color: black;
+        width: fit-content;    
+        max-width: 60%; 
+        display: flex;
+        align-items: center;
+        padding: 5px 5px;
+        color: white;
+        user-select: none;
+        overflow: hidden;
+        transition: .5s;
+        text-align: center;
+        text-decoration: none;
     }
 
     .home{
