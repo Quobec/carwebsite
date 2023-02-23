@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Scrollbar from '../../components/scrollbar/scrollbar.js'
 import Menu from '../../components/menu/menu.js'
 import CarArticle from '../../components/carArticle/carArticle.js'
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 import porsche911_1 from "../../public/images/porsche911_1.jpg";
 import porsche911_2 from "../../public/images/porsche911_2.jpg";
 import porsche911_3 from "../../public/images/porsche911_3.avif";
@@ -88,7 +88,7 @@ export default function Home() {
   };
 
   const article2 = {
-    carName: "Porsche 911 (Type 930)",
+    carName: "Porsche 911 (Type 930)123123",
     intro: "The 911 is a classic sports car that has been in production since the 1960s, and the Type 930 was produced from 1975 to 1989.",
     backgroundPicture: porsche911_2,
     articlePictures: [porsche911_1, porsche911_3, porsche911_4],
@@ -164,7 +164,7 @@ export default function Home() {
   };
 
   const article3 = {
-    carName: "Porsche 911 (Type 930)",
+    carName: "Porsche 911 (Type 930)234234",
     intro: "The 911 is a classic sports car that has been in production since the 1960s, and the Type 930 was produced from 1975 to 1989.",
     backgroundPicture: porsche911_3,
     articlePictures: [porsche911_1, porsche911_2, porsche911_4],
@@ -240,7 +240,7 @@ export default function Home() {
   };
 
   const article4 = {
-    carName: "Porsche 911 (Type 930)",
+    carName: "Porsche 911 (Type 9306754234)",
     intro: "The 911 is a classic sports car that has been in production since the 1960s, and the Type 930 was produced from 1975 to 1989.",
     backgroundPicture: porsche911_4,
     articlePictures: [porsche911_1, porsche911_2, porsche911_3],
@@ -321,7 +321,6 @@ export default function Home() {
 
     window.addEventListener("scroll", function() {
       const scrollPercent = (document.documentElement.scrollTop + window.innerHeight) / document.documentElement.scrollHeight * 100;
-      console.log(scrollPercent);
     });
   });
 

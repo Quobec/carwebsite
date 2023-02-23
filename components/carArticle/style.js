@@ -7,19 +7,21 @@ export const CarArticle = styled.div `
     position: relative;
     background-color: transparent;
 
+    ${props => console.log(props.backgroundBlur)}
 
-    .welcome:before{
+    .welcomeImage{
+        filter: blur(${props => props.backgroundBlur+"px"});
         background-image: url(${props => props.backgroundImage.src});
-        width: 100%;
-        height: 100%;
         background-position: center;
         background-size: 100%;
         background-repeat: no-repeat;
-        filter: blur(8px);
         position: absolute;
-        top: 100px;
-        left: 100px;
+        top: 0;
+        left: 0;
         background-color: red;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
     }
 
     .welcome{

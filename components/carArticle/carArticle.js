@@ -1,13 +1,35 @@
 import * as S from "./style.js";
+import { useEffect } from 'react';
 
 export default function CarArticle({article}) {
 
+
+    let blur;
+    
+    useEffect(() => {
+        
+        let zeroBlurPos = document.querySelector('#'+article.carName
+        .replaceAll("(", "")
+        .replaceAll(")", "")
+        .replaceAll(" ", "_"))
+        .getBoundingClientRect().top;
+
+
+        window.addEventListener("scroll", function() {
+            //console.log("scrollTop" + Math.floor(document.documentElement.scrollTop));
+            blur = document.documentElement.scrollTop - zeroBlurPos;
+            console.log(blur)
+        });
+    },[blur]);
+
     return (
         <>
-            <S.CarArticle backgroundImage={article.backgroundPicture}>
-                {/* <div className="welcome">
-                </div> */}
-                <div className="welcome">
+            <S.CarArticle backgroundImage={article.backgroundPicture} backgroundBlur={blur}>
+                <div className="welcome" id={article.carName
+                    .replaceAll("(", "")
+                    .replaceAll(")", "")
+                    .replaceAll(" ", "_")}>
+                    <div className="welcomeImage"></div>
                     <h5>Car Classics</h5>
                     <h3>{article.carName}</h3>
                     <p>{article.intro}</p>
@@ -20,7 +42,7 @@ export default function CarArticle({article}) {
                         <h3>{article.bodyType}</h3>
                         <h5>Fuel</h5>
                         <h3>{article.fuelType}</h3>
-                    </div>
+                    </div>      
                     <div className="text">
                         {Object.values(article.sections).map((section) => {
                             return <>

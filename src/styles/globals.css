@@ -7,9 +7,8 @@ main{
 
 html{
   scroll-behavior: smooth !important;
-  background-color: violet;
+  background-color: violet; /* change to grey when done */
   font-family: 'Karla', sans-serif;
-
 }
 
 section{
