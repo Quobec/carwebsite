@@ -9,7 +9,7 @@ export const Scrollbar = styled.div`
 export const Container = styled.div`
 
     position: fixed;
-    height: 100vh;
+    height: 100%;
     width: 110px;
     display: flex;
     align-items: center;
@@ -78,11 +78,30 @@ export const Container = styled.div`
 
     .home{
         position: absolute;
-        width: 50%;
-        aspect-ratio: 1/1;
-        background-color: #ffffff;
-        border-radius: 10px;
+        width: fit-content;
+        padding: 10px;
+        box-sizing: border-box;
         top: 30px;
         cursor: pointer;
+        background-color: #fff;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+
+        span{
+            text-align: center;
+            font-weight: 600;
+        }
+
+        span:nth-child(1){
+            font-size: 20px;
+            font-weight: 300;
+        }
+        span:nth-child(2){
+            font-size: 11px;
+        }
+        span:nth-child(3){
+            font-size: 15px;
+        }
     }
 `;

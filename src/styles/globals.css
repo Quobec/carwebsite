@@ -7,7 +7,6 @@ main{
 
 html{
   scroll-behavior: smooth;
-  background-color: grey; /* change to grey when done */
   font-family: 'Karla', sans-serif;
 }
 
@@ -26,6 +25,29 @@ footer{
 
 footer p{
   margin: .5em;
+}
+
+.scrollToTop{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: #000;
+  color: #fff;
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 1s;
+}
+
+.hidden{
+  transform: translateX(200px);
 }
 
 /* *{

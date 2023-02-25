@@ -5,7 +5,7 @@ export default function Menu() {
 
   return (
     <>
-        <S.Menu>
+        <S.Menu id="top">
             <div className="menu_item">
                 <p>Models</p>
             </div>

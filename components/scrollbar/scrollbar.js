@@ -10,7 +10,11 @@ export default function Scrollbar({refScroll, articles}) {
     <>
         <S.Scrollbar>
             <S.Container ref={refScroll}>
-                <div className="home"></div>
+                <div className="home">
+                  <span>CAR</span>
+                  <span>Enthusiasts</span>
+                  <span>Forum</span>
+                </div>
                 {Object.values(articles).map((article) => {
                   let addon = <>
                     <a href={"/#"+article.carName

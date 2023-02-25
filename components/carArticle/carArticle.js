@@ -1,7 +1,7 @@
 import * as S from "./style.js";
 import { useEffect, useState } from 'react';
 
-export default function CarArticle({article, navmap}) {
+export default function CarArticle({article, setScroll}) {
 
 
     const [blur, setBlur] = useState(0);
@@ -9,28 +9,20 @@ export default function CarArticle({article, navmap}) {
 
     useEffect(() => {
 
+
         zeroBlurPos = document.querySelector('#'+article.carName
         .replaceAll(" ", "-"))
         .getBoundingClientRect().top + document.documentElement.scrollTop;
 
         window.addEventListener("scroll", function() {
-            setBlur((document.documentElement.scrollTop - zeroBlurPos) * 0.05);
+
+        setScroll(document.documentElement.scrollTop);
+
+        setBlur((document.documentElement.scrollTop - zeroBlurPos) * 0.05);
 
             zeroBlurPos = document.querySelector('#'+article.carName
             .replaceAll(" ", "-"))
             .getBoundingClientRect().top + document.documentElement.scrollTop;
-
-
-            // document.querySelectorAll('.segment_lesser, .segment_main').forEach((el) => {
-            //     if(Math.floor(document.querySelector("#"+el.href.split("#")[1])
-            //     .getBoundingClientRect().top) === Math.floor(document.documentElement.scrollTop)){
-            //         el.classList.add("selected");
-            //     }                
-            //     console.log(document.querySelector("#"+el.href.split("#")[1]).outerHTML + 
-            //     Math.floor(document.querySelector("#"+el.href.split("#")[1])
-            //     .getBoundingClientRect().top))
-            //     //console.log("scroll: "+ Math.floor(document.documentElement.scrollTop))
-            // })
         });
     },[]);
 

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Scrollbar from '../../components/scrollbar/scrollbar.js'
 import Menu from '../../components/menu/menu.js'
 import CarArticle from '../../components/carArticle/carArticle.js'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import porsche911_1 from "../../public/images/porsche911_1.jpg";
 import porsche911_2 from "../../public/images/porsche911_2.jpg";
 import porsche911_3 from "../../public/images/porsche911_3.avif";
@@ -22,17 +22,18 @@ import vwbeetle_3 from "../../public/images/vwbeetle_3.avif";
 export default function Home() {
 
   const navmap = useRef(null);
+  const [scrollValue, setScrollValue] = useState(0);
 
   useEffect(() => {
 
-    const observer1 = new IntersectionObserver((entries) => {
+    const observerForTextAnimation = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
         if(entry.isIntersecting){
             entry.target.classList.add("animated");
         }
         })
     })
-    const observer2 = new IntersectionObserver((entries) => {
+    const observerForNavmap = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
       if(entry.isIntersecting){
         document.querySelector(("[href='/#"+entry.target.id+"']").replace("_","-")).classList.add("selected")
@@ -42,19 +43,18 @@ export default function Home() {
     })
   })
 
-    let elements1 = document.querySelectorAll('h3, h5, p, li')
-    let elements2 = [];
+    let textForAnimation = document.querySelectorAll('h3, h5, p, li')
+    let navmapSegments = [];
     document.querySelectorAll('.segment_lesser, .segment_main').forEach((el) => {
-     elements2.push(document.querySelector(("#"+el.href.split("#")[1]).replace("-","_")))
-    })
-    console.log(elements2)
-
-    elements2.forEach((element) => {
-      observer2.observe(element);
+      navmapSegments.push(document.querySelector(("#"+el.href.split("#")[1]).replace("-","_")))
     })
 
-    elements1.forEach((element) => {
-      observer1.observe(element);
+    navmapSegments.forEach((navmapSegment) => {
+      observerForNavmap.observe(navmapSegment);
+    })
+
+    textForAnimation.forEach((text) => {
+      observerForTextAnimation.observe(text);
     })
   })
 
@@ -354,11 +354,12 @@ export default function Home() {
         <Menu></Menu>
         <Scrollbar articles={{ article1, article2, article3, article4 }} refScroll={navmap}></Scrollbar>
         <section>
-          <CarArticle navmap={navmap} article={article1}></CarArticle>
-          <CarArticle navmap={navmap} article={article2}></CarArticle>
-          <CarArticle navmap={navmap} article={article3}></CarArticle>
-          <CarArticle navmap={navmap} article={article4}></CarArticle>
+          <CarArticle setScroll={setScrollValue} article={article1}></CarArticle>
+          <CarArticle setScroll={setScrollValue} article={article2}></CarArticle>
+          <CarArticle setScroll={setScrollValue} article={article3}></CarArticle>
+          <CarArticle setScroll={setScrollValue} article={article4}></CarArticle>
         </section>
+        <a className={scrollValue === 0 ? 'scrollToTop hidden' : 'scrollToTop shown'} href='/#top'>Scroll to top</a>
       </main>
 
       <footer>
