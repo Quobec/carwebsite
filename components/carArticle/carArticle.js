@@ -1,5 +1,6 @@
 import * as S from "./style.js";
 import { useEffect, useState } from 'react';
+import { Fragment } from "react";
 
 export default function CarArticle({article, setScroll}) {
 
@@ -9,21 +10,21 @@ export default function CarArticle({article, setScroll}) {
 
     useEffect(() => {
 
-
         zeroBlurPos = document.querySelector('#'+article.carName
         .replaceAll(" ", "-"))
         .getBoundingClientRect().top + document.documentElement.scrollTop;
 
-        window.addEventListener("scroll", function() {
-
-        setScroll(document.documentElement.scrollTop);
-
-        setBlur((document.documentElement.scrollTop - zeroBlurPos) * 0.05);
+        window.addEventListener("resize", (event) => {
 
             zeroBlurPos = document.querySelector('#'+article.carName
             .replaceAll(" ", "-"))
             .getBoundingClientRect().top + document.documentElement.scrollTop;
         });
+
+        window.addEventListener("scroll", (event) => {
+            setBlur((document.documentElement.scrollTop - zeroBlurPos) * 0.05);
+        });
+
     },[]);
 
 
@@ -32,8 +33,7 @@ export default function CarArticle({article, setScroll}) {
             <S.CarArticle backgroundImage={article.backgroundPicture} id={article.carName.replaceAll(" ", "-")}>
                 <div className="mark" id={article.carName.replaceAll(" ", "_")}></div>
                 <div className="welcome">
-                    <div className="welcomeImage" style={{filter: "blur("+Math.min(8, blur)+"px)"}}></div> 
-                    {/* change body background-color to grey for build version */}
+                    <div className="welcomeImage" style={{filter: "blur("+Math.min(8, Math.floor(blur))+"px)"}}></div> 
                     <div className="intro">
                         <h5>Car Classics</h5>
                         <h3>{article.carName}</h3>
@@ -50,32 +50,31 @@ export default function CarArticle({article, setScroll}) {
                         <h3>{article.fuelType}</h3>
                     </div>      
                     <div className="text">
-                        {Object.values(article.sections).map((section) => {
-                            return <>
-                                <h3 id={(article.carName+section.title).replaceAll(" ", "")} className="forAnimation">{section.title}</h3>
+                        {Object.values(article.sections).map((section, index) => {
+                            return <Fragment key={(section+index).toString()}>
+                                <h3 key={(section+index).toString()} id={(article.carName+section.title).replaceAll(" ", "")} className="forAnimation">{section.title}</h3>
                                 {section.content.map((value) => {
-                                    return <p className="forAnimation">{value}</p>
+                                    return <p key={(value+index).toString()} className="forAnimation">{value}</p>
                                 })}
-                            </>
+                            </Fragment>
                         })}
                         <h3 id={(article.carName+article.technicalData.title).replaceAll(" ", "")}>{article.technicalData.title}</h3>
-                        {Object.values(article.technicalData.content).map((section) => {
-                            return <div className="techDataBlock">
-                                <h5 className="forAnimation">{section.subTitle}</h5>
-                                <ul>
-                                    {section.content.map((value) => {
-                                    return <li className="forAnimation">{value}</li>
+
+                        {Object.values(article.technicalData.content).map((section, index) => {
+                            return <div className="techDataBlock" key={(section+index).toString()}>
+                                <h5 className="forAnimation" key={(section.subTitle+index).toString()} >{section.subTitle}</h5>
+                                <ul key={("ul"+index).toString()}>
+                                    {section.content.map((value, index) => {
+                                    return <li key={(value+index).toString()} className="forAnimation">{value}</li>
                                     })}
                                 </ul>
                             </div>
-                        })
-                        
-                        
-                        }
+                        })}
+
                     </div>
                     <div className="gallery">
                         {article.articlePictures.map((picture) => {
-                            return <img className="articleImage" src={picture.src}/>
+                            return <img key={picture.src.toString()} className="articleImage" src={picture.src}/>
                         })}
                     </div>
                 </div>

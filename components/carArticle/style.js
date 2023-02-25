@@ -103,7 +103,7 @@ export const CarArticle = styled.div `
 
             h5{
                 margin: 10px 0;
-                font-size: 17px;
+                font-size: 100%;
                 font-weight: 400;
                 color: #6FC9B9;
                 width: 80%;
@@ -111,8 +111,8 @@ export const CarArticle = styled.div `
 
             h3{
                 margin: 10px 0;
-                font-size: 32px;
-                font-weight: 500;
+                font-size: 150%;
+                font-weight: 700;
             }
 
         }

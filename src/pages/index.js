@@ -3,10 +3,6 @@ import Scrollbar from '../../components/scrollbar/scrollbar.js'
 import Menu from '../../components/menu/menu.js'
 import CarArticle from '../../components/carArticle/carArticle.js'
 import { useEffect, useRef, useState } from 'react';
-import porsche911_1 from "../../public/images/porsche911_1.jpg";
-import porsche911_2 from "../../public/images/porsche911_2.jpg";
-import porsche911_3 from "../../public/images/porsche911_3.avif";
-import porsche911_4 from "../../public/images/porsche911_4.avif";
 import chevroletcorvette_1 from "../../public/images/chevroletcorvette_1.avif";
 import chevroletcorvette_2 from "../../public/images/chevroletcorvette_2.avif";
 import chevroletcorvette_3 from "../../public/images/chevroletcorvette_3.avif";
@@ -15,48 +11,15 @@ import fordmustang_1 from "../../public/images/fordmustang_1.avif";
 import fordmustang_2 from "../../public/images/fordmustang_2.avif";
 import fordmustang_3 from "../../public/images/fordmustang_3.avif";
 import fordmustang_4 from "../../public/images/fordmustang_4.avif";
+import porsche911_1 from "../../public/images/porsche911_1.jpg";
+import porsche911_2 from "../../public/images/porsche911_2.jpg";
+import porsche911_3 from "../../public/images/porsche911_3.avif";
+import porsche911_4 from "../../public/images/porsche911_4.avif";
 import vwbeetle_1 from "../../public/images/vwbeetle_1.avif";
 import vwbeetle_2 from "../../public/images/vwbeetle_2.avif";
 import vwbeetle_3 from "../../public/images/vwbeetle_3.avif";
 
 export default function Home() {
-
-  const navmap = useRef(null);
-  const [scrollValue, setScrollValue] = useState(0);
-
-  useEffect(() => {
-
-    const observerForTextAnimation = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("animated");
-        }
-        })
-    })
-    const observerForNavmap = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-      if(entry.isIntersecting){
-        document.querySelector(("[href='/#"+entry.target.id+"']").replace("_","-")).classList.add("selected")
-      } else {
-        document.querySelector(("[href='/#"+entry.target.id+"']").replace("_","-")).classList.remove("selected")
-      }
-    })
-  })
-
-    let textForAnimation = document.querySelectorAll('h3, h5, p, li')
-    let navmapSegments = [];
-    document.querySelectorAll('.segment_lesser, .segment_main').forEach((el) => {
-      navmapSegments.push(document.querySelector(("#"+el.href.split("#")[1]).replace("-","_")))
-    })
-
-    navmapSegments.forEach((navmapSegment) => {
-      observerForNavmap.observe(navmapSegment);
-    })
-
-    textForAnimation.forEach((text) => {
-      observerForTextAnimation.observe(text);
-    })
-  })
 
   const article1 = {
     carName: "Porsche 911",
@@ -340,6 +303,57 @@ export default function Home() {
     }
   };
 
+  const navmap = useRef(null);
+  const [scrollValue, setScrollValue] = useState(0);
+
+  
+
+  useEffect(() => {
+
+    window.addEventListener('scroll', (event) => {
+
+      setScrollValue(document.documentElement.scrollTop);
+
+    })
+
+
+    const observerForTextAnimation = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("animated");
+        }
+        })
+    })
+
+    const observerForNavmap = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          document.querySelector(("[href='/#"+entry.target.id+"']").replace("_","-")).classList.add("selected")
+        } else {
+          document.querySelector(("[href='/#"+entry.target.id+"']").replace("_","-")).classList.remove("selected")
+        }
+      })
+    })
+
+    let textForAnimation = document.querySelectorAll('h3, h5, p, li')
+    let navmapSegments = [];
+    document.querySelectorAll('.segment_lesser, .segment_main').forEach((el) => {
+      navmapSegments.push(document.querySelector(("#"+el.href.split("#")[1]).replace("-","_")))
+    })
+
+    navmapSegments.forEach((navmapSegment) => {
+      observerForNavmap.observe(navmapSegment);
+    })
+
+    textForAnimation.forEach((text) => {
+      observerForTextAnimation.observe(text);
+    })
+
+    console.log(article1);
+
+  },[])
+
+
   return (
     <>
       <Head>
@@ -354,17 +368,17 @@ export default function Home() {
         <Menu></Menu>
         <Scrollbar articles={{ article1, article2, article3, article4 }} refScroll={navmap}></Scrollbar>
         <section>
-          <CarArticle setScroll={setScrollValue} article={article1}></CarArticle>
-          <CarArticle setScroll={setScrollValue} article={article2}></CarArticle>
-          <CarArticle setScroll={setScrollValue} article={article3}></CarArticle>
-          <CarArticle setScroll={setScrollValue} article={article4}></CarArticle>
+          <CarArticle article={article1}></CarArticle>
+          <CarArticle article={article2}></CarArticle>
+          <CarArticle article={article3}></CarArticle>
+          <CarArticle article={article4}></CarArticle>
         </section>
         <a className={scrollValue === 0 ? 'scrollToTop hidden' : 'scrollToTop shown'} href='/#top'>Scroll to top</a>
       </main>
 
       <footer>
         <p>All images originate from unsplash.com and belong to their respective authors.</p>
-        <p>All text was generated using ChatGPT.</p>
+        <p>All text has been generated by ChatGPT.</p>
       </footer>
     </>
   )
