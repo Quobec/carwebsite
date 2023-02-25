@@ -3,9 +3,6 @@ import * as S from "./style.js";
 export default function Scrollbar({refScroll, articles}) {
 
   function Clicked(e){
-    document.querySelectorAll(".segment_main, .segment_lesser").forEach((el) => {
-      el.classList.remove("selected");
-    })
     e.target.classList.add("selected");
   }
 
@@ -17,8 +14,6 @@ export default function Scrollbar({refScroll, articles}) {
                 {Object.values(articles).map((article) => {
                   let addon = <>
                     <a href={"/#"+article.carName
-                    .replaceAll("(", "")
-                    .replaceAll(")", "")
                     .replaceAll(" ", "-")} 
                     className="segment_main"
                     onClick={Clicked}

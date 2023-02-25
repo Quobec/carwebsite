@@ -10,31 +10,28 @@ export default function CarArticle({article, navmap}) {
     useEffect(() => {
 
         zeroBlurPos = document.querySelector('#'+article.carName
-        .replaceAll("(", "")
-        .replaceAll(")", "")
         .replaceAll(" ", "-"))
         .getBoundingClientRect().top + document.documentElement.scrollTop;
 
         window.addEventListener("scroll", function() {
             setBlur((document.documentElement.scrollTop - zeroBlurPos) * 0.05);
-        });
 
-        window.addEventListener("resize", function() {
             zeroBlurPos = document.querySelector('#'+article.carName
-            .replaceAll("(", "")
-            .replaceAll(")", "")
             .replaceAll(" ", "-"))
             .getBoundingClientRect().top + document.documentElement.scrollTop;
-            // console.log(zeroBlurPos);
-            // console.log(document.querySelector('#'+article.carName
-            // .replaceAll("(", "")
-            // .replaceAll(")", "")
-            // .replaceAll(" ", "_"))
-            // .getBoundingClientRect().top)
-            // the problem was i cas calculating the y from an element with padding
-            // that was offsetting the position where blur was supposed to be zero
+
+
+            // document.querySelectorAll('.segment_lesser, .segment_main').forEach((el) => {
+            //     if(Math.floor(document.querySelector("#"+el.href.split("#")[1])
+            //     .getBoundingClientRect().top) === Math.floor(document.documentElement.scrollTop)){
+            //         el.classList.add("selected");
+            //     }                
+            //     console.log(document.querySelector("#"+el.href.split("#")[1]).outerHTML + 
+            //     Math.floor(document.querySelector("#"+el.href.split("#")[1])
+            //     .getBoundingClientRect().top))
+            //     //console.log("scroll: "+ Math.floor(document.documentElement.scrollTop))
+            // })
         });
-        
     },[]);
 
 
@@ -45,12 +42,7 @@ export default function CarArticle({article, navmap}) {
                     .replaceAll(")", "")
                     .replaceAll(" ", "-")}>
 
-                <div className="welcome" 
-                    // id={article.carName
-                    // .replaceAll("(", "")
-                    // .replaceAll(")", "")
-                    // .replaceAll(" ", "_")}
-                    >
+                <div className="welcome">
                     <div className="welcomeImage" style={{filter: "blur("+Math.min(8, blur)+"px)"}}></div> 
                     {/* change body background-color to grey for build version */}
                     <div className="intro">

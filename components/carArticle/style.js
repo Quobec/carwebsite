@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CarArticle = styled.div `
 
-    width: 99vw;
+    width: 100%;
     height: fit-content;
     position: relative;
     background-color: transparent;
