@@ -66,7 +66,7 @@ export default function CarArticle({article, navmap}) {
                                 })}
                             </>
                         })}
-                        <h3>{article.technicalData.title}</h3>
+                        <h3 id={(article.carName+article.technicalData.title).replaceAll(" ", "")}>{article.technicalData.title}</h3>
                         {Object.values(article.technicalData.content).map((section) => {
                             return <div className="techDataBlock">
                                 <h5 className="forAnimation">{section.subTitle}</h5>

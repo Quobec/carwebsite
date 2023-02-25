@@ -21,6 +21,7 @@ export default function Scrollbar({refScroll, articles}) {
                     {Object.values(article.sections).map((section) => {
                       return <a href={"/#"+(article.carName+section.title).replaceAll(" ", "")} className="segment_lesser" onClick={Clicked}>{section.title}</a>
                     })}
+                    <a href={"/#"+(article.carName+article.technicalData.title).replaceAll(" ", "")} className="segment_lesser" onClick={Clicked}>{article.technicalData.title}</a>
                   </>
                   return addon;
                 })}
