@@ -21,42 +21,59 @@ export const Container = styled.div`
 
     .segment_main{
         width: 50px; 
-        height: 20px; 
-        min-height: 20px;  
+        height: 10px; 
         background-color: #ffffff;
         color: white;
         user-select: none;
         overflow: hidden;
         border-radius: 10px;
+        cursor: pointer;
+        color: white;
+        border-radius: 10px;
+        overflow: hidden;
         font-size: 10px;
+        user-select: none;
+        transition: .5s;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 5px;
+        text-align: center;
     }
 
     .segment_lesser{
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         background-color: #ffffff;
         border-radius: 10px;
         cursor: pointer;
         color: white;
-        user-select: none;
         border-radius: 10px;
         overflow: hidden;
         font-size: 10px;
+        user-select: none;
+        transition: .5s;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 5px;
+        text-align: center;
     }
 
     .selected{
-        background-color: black;
-        width: fit-content;    
-        max-width: 60%; 
-        display: flex;
-        align-items: center;
-        padding: 5px 5px;
-        color: white;
-        user-select: none;
-        overflow: hidden;
-        transition: .5s;
-        text-align: center;
-        text-decoration: none;
+        background-color: black !important;
+        width: 60%; 
+        height: 20px;
+        border-radius: 20px;
+    }
+
+    .segment_lesser:hover, .segment_main:hover{
+        width: 60%;
+        height: 20px;
+        background-color: grey;
+        border-radius: 20px;
     }
 
     .home{

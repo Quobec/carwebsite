@@ -35,20 +35,19 @@ export default function Home() {
     const observer2 = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
       if(entry.isIntersecting){
-        //console.log("[href='#"+entry.target.id+"']")
-        //console.log(document.querySelector("[href='/#"+entry.target.id+"']"))
-        document.querySelector("[href='/#"+entry.target.id+"']").classList.add("selected")
+        document.querySelector(("[href='/#"+entry.target.id+"']").replace("_","-")).classList.add("selected")
       } else {
-        document.querySelector("[href='/#"+entry.target.id+"']").classList.remove("selected")
+        document.querySelector(("[href='/#"+entry.target.id+"']").replace("_","-")).classList.remove("selected")
       }
-      })
+    })
   })
 
     let elements1 = document.querySelectorAll('h3, h5, p, li')
     let elements2 = [];
     document.querySelectorAll('.segment_lesser, .segment_main').forEach((el) => {
-     elements2.push(document.querySelector("#"+el.href.split("#")[1]))
+     elements2.push(document.querySelector(("#"+el.href.split("#")[1]).replace("-","_")))
     })
+    console.log(elements2)
 
     elements2.forEach((element) => {
       observer2.observe(element);

@@ -7,7 +7,7 @@ main{
 
 html{
   scroll-behavior: smooth;
-  background-color: violet; /* change to grey when done */
+  background-color: grey; /* change to grey when done */
   font-family: 'Karla', sans-serif;
 }
 

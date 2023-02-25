@@ -37,11 +37,8 @@ export default function CarArticle({article, navmap}) {
 
     return (
         <>
-            <S.CarArticle backgroundImage={article.backgroundPicture} id={article.carName
-                    .replaceAll("(", "")
-                    .replaceAll(")", "")
-                    .replaceAll(" ", "-")}>
-
+            <S.CarArticle backgroundImage={article.backgroundPicture} id={article.carName.replaceAll(" ", "-")}>
+                <div className="mark" id={article.carName.replaceAll(" ", "_")}></div>
                 <div className="welcome">
                     <div className="welcomeImage" style={{filter: "blur("+Math.min(8, blur)+"px)"}}></div> 
                     {/* change body background-color to grey for build version */}
