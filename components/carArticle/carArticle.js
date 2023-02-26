@@ -74,9 +74,20 @@ export default function CarArticle({article, setScroll}) {
                     </div>
                     <div className="gallery">
                         {article.articlePictures.map((picture) => {
-                            return <img key={picture.src.toString()} className="articleImage" src={picture.src}/>
+                            return <img key={picture.src.toString()} className="articleImage" src={picture.src} 
+                            onClick={() => {
+                                document.querySelector(".bigPictureContainer").classList.remove("hidden");
+                                document.querySelector(".bigPicture").src = picture.src;
+                            }}/>
                         })}
                     </div>
+                </div>
+                <div className="bigPictureContainer hidden">
+                    <div className="close" onClick={() => {
+                        document.querySelector(".bigPictureContainer").classList.add("hidden");
+                    }}>
+                    X</div>
+                    <img className="bigPicture"></img>
                 </div>
             </S.CarArticle>
         </>

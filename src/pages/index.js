@@ -349,6 +349,7 @@ export default function Home() {
       observerForTextAnimation.observe(text);
     })
 
+    console.log("Article format:");
     console.log(article1);
 
   },[])

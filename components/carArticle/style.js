@@ -7,6 +7,45 @@ export const CarArticle = styled.div `
     position: relative;
     background-color: transparent;
 
+    .bigPictureContainer{
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+            .close{
+                position: absolute;
+                top: 50px;
+                right: 50px;
+                background-color: grey;
+                width: 50px;
+                height: 50px;
+                z-index: 5;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 300%;
+                border-radius: 10px;
+                user-select: none;
+                cursor: pointer;
+            }
+
+            .bigPicture{
+                height: 90%;
+                border: 10px solid white;
+            }
+        }
+
+        .hidden{
+            display: none;
+        }
+
     .welcomeImage{
         background-image: url(${props => props.backgroundImage.src});
         background-position: center;
@@ -169,6 +208,7 @@ export const CarArticle = styled.div `
                 background-repeat: no-repeat;
                 border: 10px solid #fff;
                 margin: 50px 0;
+                cursor: pointer;
             }
         }
     }
